@@ -1,0 +1,31 @@
+aid: vigil-wtf
+name: Vigil
+description: 'Vigil is a company surfaced via the API Evangelist harvest backlog (source: new-submission)
+  and added to the network as a stub for full-pipeline profiling.'
+url: https://raw.githubusercontent.com/api-evangelist/vigil-wtf/refs/heads/main/apis.yml
+x-type: company
+x-source: harvest:new-submission
+x-tier: stub
+x-tier-reason: harvest
+specificationVersion: '0.20'
+created: '2026-10-02'
+modified: '2026-10-02'
+tags:
+- Company
+apis: []
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+- FN: APIs.json
+  email: info@apis.io
+common:
+- type: Website
+  url: https://www.vigil.wtf
+- type: Documentation
+  url: https://www.vigil.wtf
+x-submission-notes: 'AI-call monitoring and token-optimisation proxy for LLM providers. | Listed on Kin''s
+  call 2026-10-02 despite: LLM observability proxy (api.vigil.wtf/ID/anthropic) with no developer docs,
+  OpenAPI or llms.txt; product is a pass-through base URL plus dashboard.'
+x-submission-probe: root 200; /docs 404; /llms.txt 404; /openapi.json 404; docs.vigil.wtf no DNS; 404
+  probe 404
+x-submitted-by: sam@vigil.wtf (apis.io/add, 2026-09-30)
