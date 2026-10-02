@@ -1,0 +1,16 @@
+generated: '2026-10-02'
+method: searched
+source: https://vigil.wtf/pricing
+name: Vigil API Plans
+audience: developer-api
+pricing_basis: none
+published: true
+plan_count: 1
+plans:
+  - name: Free
+    price_text: "$0 /mo excl. VAT"
+    price: 0
+    currency: USD
+    billing_period: month
+    description: Monitoring is free. Forever.
+    limits: []

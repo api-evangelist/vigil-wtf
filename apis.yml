@@ -1,31 +1,84 @@
 aid: vigil-wtf
+
 name: Vigil
-description: 'Vigil is a company surfaced via the API Evangelist harvest backlog (source: new-submission)
-  and added to the network as a stub for full-pipeline profiling.'
+
+image: https://www.vigil.wtf/opengraph-image
+
+description: 'Vigil offers a token‑optimisation and cost‑monitoring proxy for large‑language‑model APIs. It aggregates calls to frontier models, providing per‑call latency, error tracking, and token‑usage analytics, enabling developers to manage expenses and performance across multiple providers.'
+
 url: https://raw.githubusercontent.com/api-evangelist/vigil-wtf/refs/heads/main/apis.yml
+
 x-type: company
+
 x-source: harvest:new-submission
-x-tier: stub
-x-tier-reason: harvest
+
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-10-02 (modular-v1; was harvest)
+
 specificationVersion: '0.20'
+
 created: '2026-10-02'
+
 modified: '2026-10-02'
+
 tags:
-- Company
-apis: []
+- Monitoring
+- AI Middleware
+- Security
+- Analytics
+
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+
 common:
+- type: Plans
+  url: plans/vigil-wtf-plans-pricing.yml
+- type: Authentication
+  url: authentication/vigil-wtf-authentication.yml
+- type: Hosts
+  url: hosts/vigil-wtf-hosts.yml
+- type: Vendors
+  url: vendors/vigil-wtf-vendors.yml
+- type: TermsOfService
+  url: https://www.vigil.wtf/terms
+- type: PrivacyPolicy
+  url: https://www.vigil.wtf/privacy
+- type: Pricing
+  url: https://www.vigil.wtf/pricing
+- type: Login
+  url: https://www.vigil.wtf/auth/login
+- type: Blog
+  url: https://www.vigil.wtf/blog
+- type: DomainSecurity
+  url: security/vigil-wtf-domain-security.yml
 - type: Website
   url: https://www.vigil.wtf
-- type: Documentation
-  url: https://www.vigil.wtf
+
+apis: []
+
 x-submission-notes: 'AI-call monitoring and token-optimisation proxy for LLM providers. | Listed on Kin''s
   call 2026-10-02 despite: LLM observability proxy (api.vigil.wtf/ID/anthropic) with no developer docs,
   OpenAPI or llms.txt; product is a pass-through base URL plus dashboard.'
+
 x-submission-probe: root 200; /docs 404; /llms.txt 404; /openapi.json 404; docs.vigil.wtf no DNS; 404
   probe 404
+
 x-submitted-by: sam@vigil.wtf (apis.io/add, 2026-09-30)
+
+x-coverage:
+  state: unreadable
+  reason: no-machine-readable-spec
+  detail: API root returns 400 errors and no OpenAPI or docs are available.
+  evidence:
+    - url: https://api.vigil.wtf
+      status: 400
+  checked: '2026-10-02'
+x-enrichment:
+  date: '2026-10-02'
+  status: enriched
+  artifacts_added: 8
+  pass: modular-v1
+  engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local

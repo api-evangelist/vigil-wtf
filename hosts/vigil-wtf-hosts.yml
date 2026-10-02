@@ -1,0 +1,43 @@
+generated: '2026-10-02'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 2
+  own: 2
+  other_domain: 0
+  platform: 0
+  roles:
+  - api
+  - website
+hosts:
+- host: api.vigil.wtf
+  found_by:
+  - contract-discovery
+  types: []
+  serves: []
+  registrable_domain: vigil.wtf
+  role: api
+  relation: own
+- host: www.vigil.wtf
+  found_by:
+  - pointer
+  - probed
+  - docs-index
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - TermsOfService
+  - PrivacyPolicy
+  - Pricing
+  - Login
+  - Blog
+  - Website
+  serves:
+  - docs
+  - hosting
+  vendor: vercel
+  registrable_domain: vigil.wtf
+  role: website
+  relation: own

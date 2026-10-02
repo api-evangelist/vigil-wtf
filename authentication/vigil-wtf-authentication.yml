@@ -1,0 +1,24 @@
+generated: '2026-10-02'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://www.vigil.wtf/blog/bedrock-api-keys-are-bearer-tokens
+sources:
+- https://www.vigil.wtf/blog/bedrock-api-keys-are-bearer-tokens
+- https://www.vigil.wtf/tools/token-cost
+- https://www.vigil.wtf/blog/cache-minimums-why-nothing-below-1024-tokens-ever-caches
+- https://www.vigil.wtf/blog/fail-open-auth-when-a-missing-env-var-disables-your-security
+description: Authentication schemes used by Vigil for Bedrock API access
+schemes:
+- type: http-bearer
+  name: Bearer token
+  evidence: 'Bedrock API keys have no body binding # Then AWS shipped Bedrock API keys — long-lived credentials sent as a plain header: Authorization:
+    Bearer bedrock-api-key-...'
+  location: header
+  header: Authorization
+- type: other
+  name: SigV4
+  evidence: 'The signature lands in the Authorization header: Authorization: AWS4-HMAC-SHA256 Credential=.../bedrock/aws4_request, SignedHeaders=...,
+    Signature=8f3a...'
+  location: header
+  header: Authorization
+docs: https://www.vigil.wtf/blog/bedrock-api-keys-are-bearer-tokens
