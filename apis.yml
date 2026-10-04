@@ -19,7 +19,7 @@ specificationVersion: '0.20'
 
 created: '2026-10-02'
 
-modified: '2026-10-02'
+modified: '2026-10-04'
 
 tags:
 - Monitoring
@@ -56,8 +56,36 @@ common:
   url: security/vigil-wtf-domain-security.yml
 - type: Website
   url: https://www.vigil.wtf
+- type: Documentation
+  url: https://www.vigil.wtf/docs
+- type: LLMsTxt
+  url: https://www.vigil.wtf/llms.txt
+- type: ChangeLog
+  url: https://www.vigil.wtf/changelog
+- type: SecurityTxt
+  url: https://www.vigil.wtf/.well-known/security.txt
 
-apis: []
+apis:
+- aid: vigil-wtf:vigil-proxy
+  name: Vigil Proxy
+  tags:
+  - AI Middleware
+  - Monitoring
+  humanURL: https://www.vigil.wtf/docs
+  baseURL: https://api.vigil.wtf
+  properties:
+  - url: https://www.vigil.wtf/docs
+    type: Documentation
+  - url: https://www.vigil.wtf/openapi.json
+    type: OpenAPI
+  - url: https://www.vigil.wtf/docs#errors
+    type: ErrorCatalog
+  description: >-
+    A pass-through proxy for AI provider APIs. Requests to
+    https://api.vigil.wtf/{user_id}/{provider}/{path} are forwarded to the named provider and the
+    provider's response is returned, with Vigil's request id and optimisation headers added. The
+    OpenAPI description covers Vigil's own surface only: the route, its path parameters and
+    headers, and Vigil's error format. Request and response bodies are the provider's own.
 
 x-submission-notes: 'AI-call monitoring and token-optimisation proxy for LLM providers. | Listed on Kin''s
   call 2026-10-02 despite: LLM observability proxy (api.vigil.wtf/ID/anthropic) with no developer docs,
