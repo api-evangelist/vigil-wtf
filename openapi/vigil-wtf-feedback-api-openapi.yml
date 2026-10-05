@@ -1,0 +1,177 @@
+openapi: 3.2.0
+info:
+  title: Vigil proxy Feedback API
+  version: '2026-10-05'
+  description: 'Vigil''s own surface: the pass-through route, the feedback endpoint and Vigil''s errors. Docs: https://www.vigil.wtf/docs'
+servers:
+- url: https://api.vigil.wtf
+tags:
+- name: Feedback
+paths:
+  /v1/feedback:
+    post:
+      operationId: sendFeedback
+      summary: Send a score from 1 to 5 for one of your calls
+      description: Stored under the account of the key that sends it; a later score for the same request replaces the earlier one. An unknown request id is answered exactly like a known one. At most 4,096 bytes; 1,000 a minute per key, and a daily limit per account.
+      parameters:
+      - name: X-Vigil-Key
+        in: header
+        required: true
+        description: 'Your Vigil API key. Required. Create a key in the dashboard, under Settings → API keys or on the setup page; it is shown once. On providers where the Authorization header is free, you can send it as Authorization: Bearer <key> instead. A request with no key, or a key Vigil does not recognise, is refused with 401; if Vigil cannot check the key in time, with a retryable 503.'
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - request_id
+              - score
+              properties:
+                request_id:
+                  type: string
+                  format: uuid
+                  description: The x-vigil-request-id Vigil returned for the call.
+                score:
+                  type: integer
+                  minimum: 1
+                  maximum: 5
+      responses:
+        '200':
+          description: Stored.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - ok
+                - request_id
+                - score
+                properties:
+                  ok:
+                    const: true
+                  request_id:
+                    type: string
+                    format: uuid
+                  score:
+                    type: integer
+        '400':
+          description: feedback_bad_body
+          headers:
+            X-Vigil-Error:
+              description: Vigil's machine code, as in error.vigil_error_code.
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VigilError'
+        '401':
+          description: feedback_no_key, feedback_invalid_key
+          headers:
+            X-Vigil-Error:
+              description: Vigil's machine code, as in error.vigil_error_code.
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VigilError'
+        '405':
+          description: feedback_method
+          headers:
+            X-Vigil-Error:
+              description: Vigil's machine code, as in error.vigil_error_code.
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VigilError'
+        '413':
+          description: feedback_too_large
+          headers:
+            X-Vigil-Error:
+              description: Vigil's machine code, as in error.vigil_error_code.
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VigilError'
+        '429':
+          description: feedback_rate_limited
+          headers:
+            X-Vigil-Error:
+              description: Vigil's machine code, as in error.vigil_error_code.
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VigilError'
+        '503':
+          description: feedback_lookup_failed, feedback_store_failed
+          headers:
+            X-Vigil-Error:
+              description: Vigil's machine code, as in error.vigil_error_code.
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VigilError'
+      tags:
+      - Feedback
+components:
+  schemas:
+    VigilError:
+      type: object
+      required:
+      - type
+      - error
+      properties:
+        type:
+          const: error
+        error:
+          type: object
+          required:
+          - type
+          - message
+          - vigil_error_code
+          properties:
+            type:
+              type: string
+              description: From Anthropic's error types, so provider SDKs classify and retry it correctly.
+            message:
+              type: string
+              description: Names Vigil, and says how to fix it.
+            vigil_error_code:
+              type: string
+              enum:
+              - malformed_path
+              - invalid_user_id
+              - unknown_provider
+              - missing_path
+              - invalid_bedrock_route
+              - invalid_vertex_route
+              - vertex_regional_unavailable
+              - missing_api_key
+              - invalid_api_key
+              - key_user_mismatch
+              - vigil_auth_unavailable
+              - vigil_upstream_timeout
+              - vigil_upstream_unreachable
+              - vigil_upstream_body_unreadable
+              - vigil_upstream_unparseable
+              - vigil_internal_error
+              - feedback_bad_body
+              - feedback_no_key
+              - feedback_invalid_key
+              - feedback_method
+              - feedback_too_large
+              - feedback_rate_limited
+              - feedback_lookup_failed
+              - feedback_store_failed

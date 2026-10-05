@@ -19,7 +19,7 @@ specificationVersion: '0.20'
 
 created: '2026-10-02'
 
-modified: '2026-10-02'
+modified: '2026-10-05'
 
 tags:
 - Monitoring
@@ -56,8 +56,53 @@ common:
   url: security/vigil-wtf-domain-security.yml
 - type: Website
   url: https://www.vigil.wtf
+- type: Documentation
+  url: https://www.vigil.wtf/docs
+- type: LLMsTxt
+  url: https://www.vigil.wtf/llms.txt
+- type: ChangeLog
+  url: https://www.vigil.wtf/changelog
+- type: SecurityTxt
+  url: https://www.vigil.wtf/.well-known/security.txt
 
-apis: []
+apis:
+- aid: vigil-wtf:vigil-wtf-vigil-proxy-api
+  name: Vigil Proxy
+  description: A pass-through proxy for AI provider APIs. Requests to https://api.vigil.wtf/{user_id}/{provider}/{path}
+    are forwarded to the named provider and the provider's response is returned, with Vigil's request id and optimisation
+    headers added. The provider's OpenAPI covers Vigil's own surface only (the route, its path parameters and headers,
+    and Vigil's error format); request and response bodies are the upstream provider's own.
+  humanURL: https://www.vigil.wtf/docs
+  baseURL: https://api.vigil.wtf
+  tags:
+  - AI Middleware
+  - Monitoring
+  properties:
+  - type: OpenAPI
+    url: openapi/vigil-wtf-vigil-proxy-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://www.vigil.wtf/openapi.json
+  - type: Documentation
+    url: https://www.vigil.wtf/docs
+  - type: ErrorCatalog
+    url: https://www.vigil.wtf/docs#errors
+- aid: vigil-wtf:vigil-wtf-feedback-api
+  name: Vigil Feedback API
+  description: Send a score from 1 to 5 for one of your proxied calls, keyed by Vigil's request id (POST /v1/feedback);
+    a later score for the same request replaces the earlier one.
+  humanURL: https://www.vigil.wtf/docs#feedback
+  baseURL: https://api.vigil.wtf
+  tags:
+  - Feedback
+  properties:
+  - type: OpenAPI
+    url: openapi/vigil-wtf-feedback-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://www.vigil.wtf/openapi.json
+  - type: Documentation
+    url: https://www.vigil.wtf/docs#feedback
 
 x-submission-notes: 'AI-call monitoring and token-optimisation proxy for LLM providers. | Listed on Kin''s
   call 2026-10-02 despite: LLM observability proxy (api.vigil.wtf/ID/anthropic) with no developer docs,
@@ -82,3 +127,16 @@ x-enrichment:
   artifacts_added: 8
   pass: modular-v1
   engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local
+x-correction-request:
+  requested: '2026-10-05'
+  source:
+  - https://github.com/api-evangelist/vigil-wtf/pull/1
+  request: Add Vigil's developer docs (https://www.vigil.wtf/docs), OpenAPI (https://www.vigil.wtf/openapi.json), llms.txt,
+    changelog and security.txt, list the proxy as an API, and re-score.
+  ledger:
+  - vigil-wtf-4828f334
+  applied: '2026-10-05'
+  applied_note: Applied by hand; all five URLs verified 200 on 2026-10-05 with a 404 soft-404 control. The provider OpenAPI
+    (3.1.0, version 2026-10-05, 2 paths / 3 operations, now including POST /v1/feedback which the PR did not mention) saved
+    verbatim to openapi/_original/vigil-wtf-openapi.json and split/standardized into the Vigil Proxy and Vigil Feedback API.
+    Documentation, LLMsTxt, ChangeLog and SecurityTxt pointers added to common. The PR was not merged.
