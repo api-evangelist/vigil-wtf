@@ -1,0 +1,27 @@
+{
+  "provider": "vigil-wtf",
+  "sources": [
+    "_original/vigil-wtf-openapi.json"
+  ],
+  "outputs": [
+    "vigil-wtf-feedback-api-openapi.yml",
+    "vigil-wtf-vigil-proxy-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "vigil-wtf-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "vigil-wtf-openapi.json: tagged paths POST /{user_id}/{provider}/{path} -> Vigil Proxy",
+    "vigil-wtf-openapi.json: tagged paths GET /{user_id}/{provider}/{path} -> Vigil Proxy",
+    "vigil-wtf-openapi.json: tagged paths POST /v1/feedback -> Feedback",
+    "vigil-wtf-openapi.json: declared missing tag: Feedback",
+    "vigil-wtf-openapi.json: declared missing tag: Vigil Proxy",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "vigil-wtf-feedback-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vigil-wtf-vigil-proxy-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}
