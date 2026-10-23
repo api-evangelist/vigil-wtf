@@ -5,8 +5,15 @@
       "source": "https://www.vigil.wtf/blog",
       "feed_url": "https://www.vigil.wtf/blog/rss.xml",
       "title": "",
-      "saved": 2,
+      "saved": 0,
       "method": "discovered"
+    },
+    {
+      "source": "https://www.vigil.wtf/blog/rss.xml",
+      "feed_url": "https://www.vigil.wtf/blog/rss.xml",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
     },
     {
       "source": "https://www.vigil.wtf/auth/login",
@@ -16,6 +23,6 @@
       "method": "none"
     }
   ],
-  "post_count": 2,
-  "fetched": "2026-10-10T13:15:00Z"
+  "post_count": 25,
+  "fetched": "2026-10-17T14:53:57Z"
 }
