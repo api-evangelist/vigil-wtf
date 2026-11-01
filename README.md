@@ -64,5 +64,97 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Vigil is a company surfaced via the API Evangelist harvest backlog (source: new-submission) and added to the network as a stub for full-pipeline profiling.
-- https://www.vigil.wtf
+Vigil offers a token‑optimisation and cost‑monitoring proxy for large‑language‑model APIs. It aggregates calls to frontier models, providing per‑call latency, error tracking, and token‑usage analytics, enabling developers to manage expenses and performance across multiple providers.
+
+**Areas:** Monitoring · AI Middleware · Security · Analytics
+
+## Vigil on APIs.io
+
+Everything profiled for Vigil is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/vigil-wtf/](https://apis.io/providers/vigil-wtf/)** — or go straight to one of the APIs or properties below.
+
+### APIs (2)
+
+- [Vigil Proxy](https://apis.io/apis/vigil-wtf/vigil-wtf-vigil-proxy-api/) — A pass-through proxy for AI provider APIs. Requests to https://api.vigil.wtf/{user_id}/{provider}/{path} are forwarded to the named provider and the…
+- [Vigil Feedback API](https://apis.io/apis/vigil-wtf/vigil-wtf-feedback-api/) — Send a score from 1 to 5 for one of your proxied calls, keyed by Vigil's request id (POST /v1/feedback); a later score for the same request replaces the…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Vigil Wtf Authentication](https://apis.io/security/vigil-wtf/vigil-wtf-authentication/)
+- [Vigil Wtf Domain Security](https://apis.io/security/vigil-wtf/vigil-wtf-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Vigil Wtf Plans Pricing](https://apis.io/plans/vigil-wtf/vigil-wtf-plans-pricing/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.vigil.wtf)
+- [Documentation](https://www.vigil.wtf/docs)
+- [Pricing](https://www.vigil.wtf/pricing)
+- [Changelog](https://www.vigil.wtf/changelog)
+- [Blog](https://www.vigil.wtf/blog)
+- [Terms of service](https://www.vigil.wtf/terms)
+- [Privacy policy](https://www.vigil.wtf/privacy)
+
+## API Evangelist rating
+
+**Kin Score 38.5** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 44.4 |
+| Contract governance | 0.0 |
+| Operational transparency | 15.8 |
+| Developer ergonomics | 23.8 |
+| Access clarity | 65.8 |
+
+**Agent readiness 26.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 19.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/vigil-wtf/](https://apis.io/providers/vigil-wtf/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Vigil: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/vigil-wtf/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
